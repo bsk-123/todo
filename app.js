@@ -6,12 +6,12 @@ mongoose.connect("mongodb+srv://bsk123:WkQ9Xp1GjOonGkPO@cluster0.i0cdc.mongodb.n
 
 const app = express()
 app.set("view engine","ejs")
+
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}))
 
-let options = {
-    dotfiles : "ignore"
-}
-app.use(express.static("public",options))
+
+app.use(express.static("public"))
 
 const todoSchema = mongoose.Schema({
     username : String,
@@ -136,7 +136,7 @@ app.post("/:type",function(req,res){
     }
 })
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 5000;
 app.listen(port,function(){
-    console.log("server strted at 3000")
+    console.log("server strted at 5000")
 })
